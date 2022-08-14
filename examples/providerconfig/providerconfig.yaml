@@ -1,7 +1,7 @@
-apiVersion: template.jet.crossplane.io/v1alpha1
+apiVersion: civo.jet.crossplane.io/v1alpha1
 kind: ProviderConfig
 metadata:
-  name: default
+  name: civo-provider
 spec:
   credentials:
     source: Secret

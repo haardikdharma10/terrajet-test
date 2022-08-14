@@ -1,16 +1,15 @@
 # ====================================================================================
 # Setup Project
 
-PROJECT_NAME := provider-jet-template
+PROJECT_NAME := provider-jet-civo
 PROJECT_REPO := github.com/crossplane-contrib/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION := 1.1.6
 
-export TERRAFORM_PROVIDER_SOURCE := hashicorp/null
-export TERRAFORM_PROVIDER_VERSION := 3.1.0
-export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-null
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://releases.hashicorp.com/terraform-provider-null/3.1.0
-export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-null_v3.1.0_x5
+export TERRAFORM_PROVIDER_SOURCE := civo/civo
+export TERRAFORM_PROVIDER_VERSION := 1.0.21
+export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-civo
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/civo/terraform-provider-civo/releases/tag/v1.0.21
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
@@ -52,7 +51,7 @@ GO111MODULE = on
 # Setup Images
 
 DOCKER_REGISTRY ?= crossplane
-IMAGES = provider-jet-template provider-jet-template-controller
+IMAGES = provider-jet-civo provider-jet-civo-controller
 -include build/makelib/image.mk
 
 # ====================================================================================

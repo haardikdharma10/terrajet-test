@@ -20,19 +20,24 @@ import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
 
+	"github.com/crossplane-contrib/provider-jet-civo/config/instance"
+	"github.com/crossplane-contrib/provider-jet-civo/config/network"
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-
-	"github.com/crossplane-contrib/provider-jet-template/config/null"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/crossplane-contrib/provider-jet-template"
+	resourcePrefix = "civo"
+	modulePath     = "github.com/crossplane-contrib/provider-jet-civo"
 )
 
 //go:embed schema.json
 var providerSchema string
+
+var includeList = []string{
+	"civo_instance$",
+	"civo_network$",
+}
 
 // GetProvider returns provider configuration
 func GetProvider() *tjconfig.Provider {
@@ -44,11 +49,13 @@ func GetProvider() *tjconfig.Provider {
 	}
 
 	pc := tjconfig.NewProviderWithSchema([]byte(providerSchema), resourcePrefix, modulePath,
-		tjconfig.WithDefaultResourceFn(defaultResourceFn))
+		tjconfig.WithDefaultResourceFn(defaultResourceFn),
+		tjconfig.WithIncludeList(includeList))
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		instance.Configure,
+		network.Configure,
 	} {
 		configure(pc)
 	}

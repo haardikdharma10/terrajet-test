@@ -1,0 +1,14 @@
+apiVersion: instance.civo.jet.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: test-crossplane-instance-nossh
+  namespace: crossplane-system
+spec:
+  forProvider:
+    diskImage: ubuntu-focal
+    region: LON1
+    size: g3.large
+    hostname: myCrossplaneInstance2
+    initialUser: crossplane
+  providerConfigRef:
+    name: civo-provider
