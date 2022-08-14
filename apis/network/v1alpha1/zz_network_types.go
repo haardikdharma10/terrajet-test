@@ -29,6 +29,8 @@ type NetworkObservation struct {
 	Default *bool `json:"default,omitempty" tf:"default,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type NetworkParameters struct {

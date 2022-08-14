@@ -177,6 +177,8 @@ spec:
                     type: boolean
                   id:
                     type: string
+                  name:
+                    type: string
                 type: object
               conditions:
                 description: Conditions of the resource.
