@@ -9,7 +9,7 @@ export TERRAFORM_VERSION := 1.1.6
 export TERRAFORM_PROVIDER_SOURCE := civo/civo
 export TERRAFORM_PROVIDER_VERSION := 1.0.21
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-civo
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/civo/terraform-provider-civo/releases/tag/v1.0.21
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/civo/terraform-provider-civo/releases/download/v$(TERRAFORM_PROVIDER_VERSION)
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
