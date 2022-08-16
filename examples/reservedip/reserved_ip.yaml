@@ -1,0 +1,10 @@
+apiVersion: reservedip.civo.jet.crossplane.io/v1alpha1
+kind: IP
+metadata:
+  name: test-reserved-ip
+spec:
+  forProvider:
+    name: test-reserved-ip
+    region: LON1
+  providerConfigRef:
+    name: civo-provider

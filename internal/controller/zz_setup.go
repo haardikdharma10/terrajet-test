@@ -21,18 +21,22 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
+	firewall "github.com/crossplane-contrib/provider-jet-civo/internal/controller/firewall/firewall"
 	instance "github.com/crossplane-contrib/provider-jet-civo/internal/controller/instance/instance"
 	network "github.com/crossplane-contrib/provider-jet-civo/internal/controller/network/network"
 	providerconfig "github.com/crossplane-contrib/provider-jet-civo/internal/controller/providerconfig"
+	ip "github.com/crossplane-contrib/provider-jet-civo/internal/controller/reservedip/ip"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		firewall.Setup,
 		instance.Setup,
 		network.Setup,
 		providerconfig.Setup,
+		ip.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

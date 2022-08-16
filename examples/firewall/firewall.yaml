@@ -1,0 +1,10 @@
+apiVersion: firewall.civo.jet.crossplane.io/v1alpha1
+kind: Firewall
+metadata:
+  name: test-crossplane-firewall
+spec:
+  forProvider:
+    name: test-crossplane-firewall
+    createDefaultRules: true
+  providerConfigRef:
+    name: civo-provider

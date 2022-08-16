@@ -20,8 +20,10 @@ import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
 
+	"github.com/crossplane-contrib/provider-jet-civo/config/firewall"
 	"github.com/crossplane-contrib/provider-jet-civo/config/instance"
 	"github.com/crossplane-contrib/provider-jet-civo/config/network"
+	"github.com/crossplane-contrib/provider-jet-civo/config/reservedip"
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -37,6 +39,8 @@ var providerSchema string
 var includeList = []string{
 	"civo_instance$",
 	"civo_network$",
+	"civo_firewall$",
+	"civo_reserved_ip$",
 }
 
 // GetProvider returns provider configuration
@@ -56,6 +60,8 @@ func GetProvider() *tjconfig.Provider {
 		// add custom config functions
 		instance.Configure,
 		network.Configure,
+		firewall.Configure,
+		reservedip.Configure,
 	} {
 		configure(pc)
 	}
