@@ -23,7 +23,7 @@ import (
 	"github.com/crossplane-contrib/provider-jet-civo/config/firewall"
 	"github.com/crossplane-contrib/provider-jet-civo/config/instance"
 	"github.com/crossplane-contrib/provider-jet-civo/config/network"
-	reservedIP "github.com/crossplane-contrib/provider-jet-civo/config/reservedip"
+	"github.com/crossplane-contrib/provider-jet-civo/config/reservedip"
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -61,7 +61,7 @@ func GetProvider() *tjconfig.Provider {
 		instance.Configure,
 		network.Configure,
 		firewall.Configure,
-		reservedIP.Configure,
+		reservedip.Configure,
 	} {
 		configure(pc)
 	}

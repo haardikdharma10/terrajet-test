@@ -1,4 +1,4 @@
-package reservedIP
+package reservedip
 
 import "github.com/crossplane/terrajet/pkg/config"
 
